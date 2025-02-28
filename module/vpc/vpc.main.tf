@@ -5,6 +5,7 @@ resource "aws_vpc" "this" {
   enable_dns_support = true
   
   tags = {
-    name = local.vpc-name
+    Name = local.vpc-name
+    Environment = var.environment
   }
 }

@@ -7,6 +7,7 @@ resource "aws_subnet" "private" {
   availability_zone = local.az-northeast-2[each.value.zone]
 
   tags = {
-    name = each.value.name
+    Name = each.value.name
+    Environment = var.environment
   }
 }

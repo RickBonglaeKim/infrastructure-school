@@ -3,8 +3,8 @@ resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    name = local.route_table-public-name
-    environment = var.environment
+    Name = local.route_table-public-name
+    Environment = var.environment
   }
 }
 

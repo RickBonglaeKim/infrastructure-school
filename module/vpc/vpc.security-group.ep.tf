@@ -3,8 +3,8 @@ resource "aws_security_group" "ep" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    name = local.security_group-ep-name
-    environment = var.environment
+    Name = local.security_group-ep-name
+    Environment = var.environment
   }
 }
 

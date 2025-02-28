@@ -16,8 +16,8 @@ resource "aws_route_table_association" "database" {
 }
 
 
-resource "aws_route" "school_v3-database-to-system" {
-  route_table_id = aws_route_table.database.id
-  destination_cidr_block = var.peering-connection.system.cidr
-  vpc_peering_connection_id = var.peering-connection.system.id
-}
+# resource "aws_route" "school_v3-database-to-system" {
+#   route_table_id = aws_route_table.database.id
+#   destination_cidr_block = var.peering-connection.system.cidr
+#   vpc_peering_connection_id = var.peering-connection.system.id
+# }

@@ -3,8 +3,8 @@ resource "aws_security_group" "load_balancer" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    name = local.security_group-alb-name
-    environment = var.environment
+    Name = local.security_group-alb-name
+    Environment = var.environment
   }
 }
 

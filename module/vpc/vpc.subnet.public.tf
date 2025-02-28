@@ -8,6 +8,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    name = each.value.name
+    Name = each.value.name
+    Environment = var.environment
   }
 }

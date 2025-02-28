@@ -4,8 +4,8 @@ resource "aws_security_group" "ec2-ssm" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    name = local.security_group-ec2-ssm-name
-    environment = var.environment
+    Name = local.security_group-ec2-ssm-name
+    Environment = var.environment
   }
 }
 

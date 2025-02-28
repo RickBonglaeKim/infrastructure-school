@@ -3,8 +3,8 @@ resource "aws_security_group" "cache" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    name = local.security_group-cache-name
-    environment = var.environment
+    Name = local.security_group-cache-name
+    Environment = var.environment
   }
 }
 

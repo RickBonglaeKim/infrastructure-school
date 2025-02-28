@@ -13,7 +13,7 @@ resource "aws_vpc_endpoint" "ecr-api" {
 
   tags = {
     Name = "${var.prefix}-ecr.api-${var.environment}"
-    environment = var.environment
+    Environment = var.environment
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_vpc_endpoint" "ecr-dkr" {
 
   tags = {
     Name = "${var.prefix}-ecr.dkr-${var.environment}"
-    environment = var.environment
+    Environment = var.environment
   }
 }
 
@@ -51,7 +51,7 @@ resource "aws_vpc_endpoint" "logs" {
 
   tags = {
     Name = "${var.prefix}-logs-${var.environment}"
-    environment = var.environment
+    Environment = var.environment
   }
 }
 
@@ -64,7 +64,7 @@ resource "aws_vpc_endpoint" "s3" {
 
   tags = {
     Name = "${var.prefix}-s3-${var.environment}"
-    environment = var.environment
+    Environment = var.environment
   }
 }
 
