@@ -3,25 +3,25 @@ output "vpc" {
   value = module.vpc.this
 }
 
-# output "alb-school-ver3" {
-#   value = module.load_balancer.alb-school-ver3
-# }
+output "alb-school-ver3" {
+  value = module.load_balancer.alb-school-ver3
+}
 
-# output "target_group-school-ver3-client" {
-#   value = module.load_balancer.target_group-school-ver3-client
-# }
+output "target_group-school-ver3-client" {
+  value = module.load_balancer.target_group-school-ver3-client
+}
 
-# output "target_group-school-ver3-scheduler" {
-#   value = module.load_balancer.target_group-school-ver3-scheduler
-# }
+output "target_group-school-ver3-scheduler" {
+  value = module.load_balancer.target_group-school-ver3-scheduler
+}
 
-# output "target_group-school-ver3-student" {
-#   value = module.load_balancer.target_group-school-ver3-student
-# }
+output "target_group-school-ver3-student" {
+  value = module.load_balancer.target_group-school-ver3-student
+}
 
-# output "target_group-school-ver3-teacher" {
-#   value = module.load_balancer.target_group-school-ver3-teacher
-# }
+output "target_group-school-ver3-teacher" {
+  value = module.load_balancer.target_group-school-ver3-teacher
+}
 
 output "subnet-database" {
   value = module.vpc.subnet-database
