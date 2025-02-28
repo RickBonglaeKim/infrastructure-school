@@ -27,6 +27,6 @@ resource "aws_ecs_service" "teacher" {
   task_definition = aws_ecs_task_definition.teacher.arn
 
   lifecycle {
-    ignore_changes = [ desired_count ]
+    ignore_changes = all
   }
 }
