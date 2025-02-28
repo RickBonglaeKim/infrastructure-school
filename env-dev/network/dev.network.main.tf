@@ -12,4 +12,5 @@ module "vpc" {
   subnet-private = local.subnet-private
   subnet-public = local.subnet-public
   peering-connection = local.peering-connection
+  nat_gateway-allocation_id = local.nat_gateway-allocation_id
 }

@@ -43,3 +43,7 @@ variable "peering-connection" {
     })
   })
 }
+
+variable "nat_gateway-allocation_id" {
+  type = string
+}

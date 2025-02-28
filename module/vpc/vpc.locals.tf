@@ -34,5 +34,4 @@ locals {
   }
 
   peer-vpc-id = "vpc-00cf7bafb1b875394"
-  nat_gateway-allocation_id = "eipalloc-0c22cf43baf99d1f5"
 }

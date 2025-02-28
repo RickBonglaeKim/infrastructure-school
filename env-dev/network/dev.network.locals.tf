@@ -60,6 +60,8 @@ locals {
     }
   }
 
+  nat_gateway-allocation_id = "eipalloc-0c22cf43baf99d1f5"
+  
   peering-connection = {
     system = {
       id = "pcx-0f259ae7eb696bfc4"
