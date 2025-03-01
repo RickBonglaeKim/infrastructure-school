@@ -15,9 +15,9 @@ resource "aws_iam_role" "ec2-ssm" {
   name = local.ec2-ssm-role-name
   assume_role_policy = data.aws_iam_policy_document.ec2-ssm.json
 
-    tags = {
-    name = local.ec2-ssm-role-name
-    environment = var.environment
+  tags = {
+    Name = local.ec2-ssm-role-name
+    Environment = var.environment
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_iam_instance_profile" "ssm" {
   role = aws_iam_role.ec2-ssm.name
 
   tags = {
-    name = local.ec2-ssm-profile-name
-    environment = var.environment
+    Name = local.ec2-ssm-profile-name
+    Environment = var.environment
   }
 }

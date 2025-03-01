@@ -8,7 +8,7 @@ resource "aws_instance" "ec2-ssm" {
   subnet_id = data.terraform_remote_state.network.outputs.subnet-public["c"].id
 
   tags = {
-    name = local.ec2-ssm-name
-    environment = var.environment
+    Name = local.ec2-ssm-name
+    Environment = var.environment
   }
 }
