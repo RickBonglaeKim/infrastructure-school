@@ -35,7 +35,7 @@ resource "aws_elasticache_cluster" "redis" {
   apply_immediately = true
 
   tags = {
-    name = local.cluster-id
-    environment = var.environment
+    Name = local.cluster-id
+    Environment = var.environment
   }
 }
