@@ -61,8 +61,8 @@ resource "aws_cloudfront_distribution" "school" {
   }
 
   tags = {
-    name = local.s3-school-name
-    environment = var.environment
+    Name = local.s3-school-name
+    Environment = var.environment
   }
 
 }
