@@ -64,8 +64,8 @@ locals {
 
   peering-connection = {
     system = {
-      id = "pcx-0f259ae7eb696bfc4"
-      cidr = "10.102.200.0/22"
+      id = "pcx-0ceba206e936a9ff8"
+      cidr = "10.200.0.0/16"
     }
   }
 

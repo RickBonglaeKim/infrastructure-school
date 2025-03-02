@@ -3,8 +3,8 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    name = local.route_table-private-name
-    environment = var.environment
+    Name = local.route_table-private-name
+    Environment = var.environment
   }
 }
 
@@ -23,8 +23,8 @@ resource "aws_route_table_association" "private" {
 }
 
 
-# resource "aws_route" "school_v3-private-to-system" {
-#   route_table_id = aws_route_table.private.id
-#   destination_cidr_block = var.peering-connection.system.cidr
-#   vpc_peering_connection_id = var.peering-connection.system.id
-# }
+resource "aws_route" "school_v3-private-to-system" {
+  route_table_id = aws_route_table.private.id
+  destination_cidr_block = var.peering-connection.system.cidr
+  vpc_peering_connection_id = var.peering-connection.system.id
+}

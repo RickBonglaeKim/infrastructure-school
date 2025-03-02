@@ -33,5 +33,5 @@ locals {
     d = "ap-northeast-2d"
   }
 
-  peer-vpc-id = "vpc-00cf7bafb1b875394"
+  peer-vpc-id = "vpc-059f9898ea7c9506f"
 }
