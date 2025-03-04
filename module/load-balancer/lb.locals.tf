@@ -8,5 +8,5 @@ locals {
   
   alb-type = "application"
   ssl-policy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
-  certificate-arn = "arn:aws:acm:ap-northeast-2:021738694739:certificate/0df8f8c1-a6bb-4440-800a-b9a5136da744"
+  certificate-arn = var.environment == "dev" ? "arn:aws:acm:ap-northeast-2:021738694739:certificate/0df8f8c1-a6bb-4440-800a-b9a5136da744" : "arn:aws:acm:ap-northeast-2:021738694739:certificate/f2b5bdaf-6061-4f09-aab4-1d29cc76e5e9"
 }
