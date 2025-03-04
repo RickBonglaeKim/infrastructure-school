@@ -5,8 +5,8 @@ resource "aws_ecs_task_definition" "client" {
   execution_role_arn = local.ecs-role-ecs_task_execution_role-arn
   
   requires_compatibilities = ["FARGATE"]
-  cpu = 512
-  memory = 1024
+  cpu = var.environment == "prod" ? 1024 : 256
+  memory = var.environment == "prod" ? 2048 : 512
   network_mode = "awsvpc"
   runtime_platform {
     operating_system_family = "LINUX"
