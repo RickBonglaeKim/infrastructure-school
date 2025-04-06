@@ -15,12 +15,16 @@ resource "aws_db_instance" "mysql" {
   vpc_security_group_ids = [data.terraform_remote_state.network.outputs.security_group-mysql.id]
   db_subnet_group_name = aws_db_subnet_group.mysql.name
 
+  allow_major_version_upgrade = false
   skip_final_snapshot = var.environment == "dev" ? true : false
-  allow_major_version_upgrade = var.environment == "dev" ? true : false
   apply_immediately = var.environment == "dev" ? true : false
 
   storage_encrypted = true
   max_allocated_storage = 1000
+
+  backup_retention_period = var.environment == "dev" ? 5 : 30
+  backup_window = "20:00-21:00" // UTC
+  maintenance_window = "sat:15:00-sat:19:00"  // UTC
 
   tags = {
     Name = local.mysql.identifier
