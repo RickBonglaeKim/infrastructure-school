@@ -1,7 +1,7 @@
 
 resource "aws_ecs_service" "scheduler" {
   
-  name = local.ecs-service.client.name
+  name = local.ecs-service.scheduler.name
   cluster = aws_ecs_cluster.this.id
   
   availability_zone_rebalancing = "ENABLED"
@@ -14,6 +14,9 @@ resource "aws_ecs_service" "scheduler" {
     rollback = true
   }
 
+  ####################################################################################################
+  # The scheduler do not need to connect to the ALB.
+  ####################################################################################################
   # load_balancer {
   #   target_group_arn = data.terraform_remote_state.network.outputs.target_group-school-ver3-scheduler.arn
   #   container_name = local.ecs-service.scheduler.container-name
@@ -30,4 +33,5 @@ resource "aws_ecs_service" "scheduler" {
   lifecycle {
     ignore_changes = all
   }
+  
 }

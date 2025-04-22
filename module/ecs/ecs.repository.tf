@@ -54,17 +54,3 @@ resource "aws_ecr_repository" "student" {
     environment = var.environment
   }
 }
-
-
-resource "aws_ecr_repository" "scheduler" {
-  name = local.ecs-repository.scheduler-name
-  
-  encryption_configuration {
-    encryption_type = "KMS"
-  }
-
-  tags = {
-    name = local.ecs-repository.scheduler-name
-    environment = var.environment
-  }
-}
