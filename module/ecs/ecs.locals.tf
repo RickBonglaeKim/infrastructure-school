@@ -17,6 +17,11 @@ locals {
       container-name =  "${var.prefix}-student-container-${var.environment}"
       log-name = "${var.prefix}-student-${var.environment}"
     }
+    scheduler = {
+      name = "${var.prefix}-scheduler-${var.environment}"
+      container-name =  "${var.prefix}-scheduler-container-${var.environment}"
+      log-name = "${var.prefix}-scheduler-${var.environment}"
+    }
   }
 
   ecs-repository = {
