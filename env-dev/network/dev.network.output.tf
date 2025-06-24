@@ -23,6 +23,26 @@ output "target_group-school-ver3-teacher" {
   value = module.load_balancer.target_group-school-ver3-teacher
 }
 
+output "alb-school-ver3-global" {
+  value = module.global-load-balancer.alb-school-ver3-global
+}
+
+output "target_group-school-ver3-global-client" {
+  value = module.global-load-balancer.target_group-school-ver3-global-client
+}
+
+output "target_group-school-ver3-global-scheduler" {
+  value = module.global-load-balancer.target_group-school-ver3-global-scheduler
+}
+
+output "target_group-school-ver3-global-student" {
+  value = module.global-load-balancer.target_group-school-ver3-global-student
+}
+
+output "target_group-school-ver3-global-teacher" {
+  value = module.global-load-balancer.target_group-school-ver3-global-teacher
+}
+
 output "subnet-database" {
   value = module.vpc.subnet-database
 }

@@ -14,7 +14,7 @@ resource "aws_ecs_service" "teacher" {
   }
 
   load_balancer {
-    target_group_arn = data.terraform_remote_state.network.outputs.target_group-school-ver3-teacher.arn
+    target_group_arn = data.terraform_remote_state.network.outputs.target_group-school-ver3-global-teacher.arn
     container_name = local.ecs-service.teacher.container-name
     container_port = 3000
   }
