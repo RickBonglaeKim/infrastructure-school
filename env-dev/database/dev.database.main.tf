@@ -34,3 +34,12 @@ module "valkey" {
   cache_node_number = 1
   environment = var.environment
 }
+
+module "global-cache-redis" {
+  source = "../../module/global.cache.redis"
+
+  prefix = local.prefix
+  node_type = "cache.t4g.micro"
+  cache_node_number = 1
+  environment = var.environment
+}
