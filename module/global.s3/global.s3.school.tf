@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "school" {
-  bucket = local.s3-bucket-name
+  bucket = replace(local.s3-school-name, "_", "-")
   
   tags = {
-    Name = local.s3-bucket-name
     Environment = var.environment
+    Name = local.s3-school-name
   }
 } 

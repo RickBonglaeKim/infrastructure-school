@@ -2,7 +2,7 @@ locals {
   alb-name = replace(replace("${var.prefix}-global-${var.environment}", ".", ""), "_", "-")
 
   alb-target_group-client-name = replace(replace("${var.prefix}-global-client-${var.environment}", ".", ""), "_", "-")
-  alb-target_group-scheduler-name = replace(replace("${var.prefix}-global-scheduler-${var.environment}", ".", ""), "_", "-")
+  alb-target_group-scheduler-name = var.environment == "dev" ? replace(replace("${var.prefix}-global-scheduler-${var.environment}", ".", ""), "_", "-") : replace(replace("${var.prefix}-gb-scheduler-${var.environment}", ".", ""), "_", "-")
   alb-target_group-student-name = replace(replace("${var.prefix}-global-student-${var.environment}", ".", ""), "_", "-")
   alb-target_group-teacher-name = replace(replace("${var.prefix}-global-teacher-${var.environment}", ".", ""), "_", "-")
   

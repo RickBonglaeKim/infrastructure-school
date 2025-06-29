@@ -1,64 +1,57 @@
-resource "aws_cloudfront_origin_access_identity" "school" {
-  comment = local.s3-cloud-front-origin-access-identity-name
+resource "aws_cloudfront_origin_access_control" "school" {
+  name = local.cloud_front-oac-name
+  origin_access_control_origin_type = "s3"
+  signing_behavior = "always"
+  signing_protocol = "sigv4"
 }
 
+
+resource "aws_cloudfront_response_headers_policy" "school" {
+  name = local.cloud_front-rhp-name
+
+  cors_config {
+    access_control_allow_credentials = false
+    access_control_allow_headers {
+      items = ["*"]
+    }
+    access_control_allow_methods {
+      items = ["GET", "HEAD"]
+    }
+    access_control_allow_origins {
+      items = ["*"]
+    }
+    origin_override = false
+  }
+}
+
+
 resource "aws_cloudfront_distribution" "school" {
-  enabled             = true
-  is_ipv6_enabled     = true
-  default_root_object = "index.html"
-  comment             = local.s3-cloud-front-distribution-name
+
+  enabled = true
 
   origin {
     domain_name = aws_s3_bucket.school.bucket_regional_domain_name
-    origin_id   = local.s3-cloud-front-distribution-name
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.school.cloudfront_access_identity_path
-    }
+    origin_id = aws_s3_bucket.school.id
+    # Do not use OAI (legacy)
+    origin_access_control_id = aws_cloudfront_origin_access_control.school.id
   }
 
   default_cache_behavior {
-    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3-cloud-front-distribution-name
-
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
-
-    viewer_protocol_policy = "redirect-to-https"
-    min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
+    allowed_methods = local.default-methods
+    cached_methods = local.default-methods
+    target_origin_id = aws_s3_bucket.school.id
+    cache_policy_id = local.default-cache-policy
+    viewer_protocol_policy = local.default-viewer-policy
+    origin_request_policy_id = local.origin-request-policy
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.school.id
   }
 
-  ordered_cache_behavior {
-    path_pattern     = "/static/*"
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3-cloud-front-distribution-name
-
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
-
-    viewer_protocol_policy = "redirect-to-https"
-    min_ttl                = 0
-    default_ttl            = 86400
-    max_ttl                = 31536000
-  }
-
-  price_class = "PriceClass_100"
+  price_class = local.default-price-class
 
   restrictions {
     geo_restriction {
       restriction_type = "none"
+      locations = []
     }
   }
 
@@ -67,7 +60,8 @@ resource "aws_cloudfront_distribution" "school" {
   }
 
   tags = {
-    Name = local.s3-cloud-front-distribution-name
+    Name = local.s3-school-name
     Environment = var.environment
   }
+
 } 

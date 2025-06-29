@@ -8,4 +8,4 @@ variable "environment" {
 
 variable "iam-arn" {
   type = string
-} 
+}

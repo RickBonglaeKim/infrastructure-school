@@ -1,9 +1,7 @@
 resource "aws_lb_listener_rule" "school-ver3-client" {
   count = var.environment == "dev" ? 1 : 0    // Will be configured in dev environment.
-
   listener_arn = aws_lb_listener.school-ver3-https.arn
   priority = 101
-
   condition {
     host_header {
       values = [ "school-global-server.dev.art-bonbon.com" ]
